@@ -16,6 +16,6 @@ One-page website for Cruz's trash and recycling can cleaning business in Willows
 
 ## To do
 
-- **Photos:** the "Before and after" section has placeholders for three before/after pairs (vertical, 3:4) and two "on the job" shots (horizontal, 16:9). Replace each `<div class="ph">` with an `<img>` and fill in the captions.
+- **Photos:** the "Before and after" section uses cartoon illustrations (inline SVG). To swap in real photos, replace a `<div class="ph toon">` with an `<img>` (before/after panels are 3:4, "on the job" shots are 16:9).
 - **Sign-up form:** it doesn't submit anywhere. It builds a message the neighbor copies and texts to Cruz. Hook it up to a form service if you want submissions collected.
 - **Hosting:** works as-is on GitHub Pages (Settings → Pages → deploy from `main`).
