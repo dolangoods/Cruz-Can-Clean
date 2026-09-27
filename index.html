@@ -65,6 +65,10 @@ header.top{display:flex;justify-content:space-between;align-items:center;gap:16p
 .bin-art .jet{stroke:#FFFDF5;stroke-width:2.6;stroke-linecap:round;stroke-dasharray:7 7;fill:none}
 @media (prefers-reduced-motion:no-preference){
   .bin-art .jet{animation:jet .26s linear infinite}
+  .bin-art .sun-rays{animation:spin 18s linear infinite;transform-box:view-box;transform-origin:0 0}
+  .bin-art .sun{animation:sunBob 3s ease-in-out infinite alternate}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes sunBob{from{translate:0 0}to{translate:0 -5px}}
   .bin-art .bounce{animation:bounce .7s ease-in-out infinite alternate}
   .bin-art .twinkle path{animation:twinkle 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
   .bin-art .twinkle path:nth-child(2n){animation-delay:-.6s}
@@ -297,7 +301,20 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
       </div>
     </div>
     <div class="bin-art" aria-hidden="true" data-parallax="-.18">
-      <svg viewBox="0 12 430 284" id="canArt">
+      <svg viewBox="0 -98 430 394" id="canArt">
+        <g class="sun" stroke="#16161D" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" transform="translate(326 -12) scale(1.42)">
+          <g class="sun-rays" fill="#FFB020"><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(0)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(30)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(60)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(90)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(120)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(150)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(180)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(210)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(240)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(270)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(300)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(330)" /></g>
+          <circle r="36" fill="#FFD84A" stroke-width="4"/>
+          <path d="M-22 -24 q6 -5 12 -1 M10 -25 q6 -4 12 1" fill="none" stroke-width="3.5"/>
+          <ellipse cx="-14" cy="-10" rx="8" ry="10" fill="#FFFDF5" stroke-width="3"/>
+          <ellipse cx="12" cy="-10" rx="8" ry="10" fill="#FFFDF5" stroke-width="3"/>
+          <circle cx="-17" cy="-7" r="4.4" fill="#16161D" stroke="none"/><circle cx="9" cy="-7" r="4.4" fill="#16161D" stroke="none"/>
+          <circle cx="-15.5" cy="-9" r="1.4" fill="#FFFDF5" stroke="none"/><circle cx="10.5" cy="-9" r="1.4" fill="#FFFDF5" stroke="none"/>
+          <circle cx="-25" cy="8" r="6" fill="#F59BE0" stroke="none" opacity=".85"/><circle cx="24" cy="8" r="6" fill="#F59BE0" stroke="none" opacity=".85"/>
+          <path d="M-17 6 Q0 12 17 6 Q15 26 0 26 Q-15 26 -17 6 Z" fill="#8E2A22" stroke-width="3.5"/>
+          <path d="M-15 7.5 Q0 12.5 15 7.5 L14 11 Q0 15.5 -14 11 Z" fill="#FFFDF5" stroke="none"/>
+          <path d="M-8 22 Q0 16 8 22 Q4 26 0 26 Q-4 26 -8 22 Z" fill="#E86A5C" stroke="none"/>
+        </g>
         <g class="twinkle"><path d="M40 61Q41.62 68.38 49 70Q41.62 71.62 40 79Q38.38 71.62 31 70Q38.38 68.38 40 61Z" fill="#16161D"/><path d="M212 41Q213.26 46.74 219 48Q213.26 49.26 212 55Q210.74 49.26 205 48Q210.74 46.74 212 41Z" fill="#6C7BFF"/><path d="M62 184Q63.08 188.92 68 190Q63.08 191.08 62 196Q60.92 191.08 56 190Q60.92 188.92 62 184Z" fill="#6C7BFF"/><path d="M250 84Q251.08 88.92 256 90Q251.08 91.08 250 96Q248.92 91.08 244 90Q248.92 88.92 250 84Z" fill="#F59BE0"/><path d="M236 227Q237.62 234.38 245 236Q237.62 237.62 236 245Q234.38 237.62 227 236Q234.38 234.38 236 227Z" fill="#B6F24A"/><path d="M404 103Q405.26 108.74 411 110Q405.26 111.26 404 117Q402.74 111.26 397 110Q402.74 108.74 404 103Z" fill="#F59BE0"/><path d="M22 124Q23.08 128.92 28 130Q23.08 131.08 22 136Q20.92 131.08 16 130Q20.92 128.92 22 124Z" fill="#B6F24A"/></g>
         <ellipse cx="128" cy="280" rx="82" ry="10" fill="#16161D"/>
         <ellipse cx="356" cy="280" rx="66" ry="10" fill="#16161D"/>
