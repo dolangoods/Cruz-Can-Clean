@@ -60,13 +60,21 @@ header.top{display:flex;justify-content:space-between;align-items:center;gap:16p
 .btn.primary:hover{filter:brightness(1.08)}
 .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
 .btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--ink)}
-.bin-art{justify-self:center;width:100%;max-width:480px}
+.bin-art{justify-self:center;width:100%;max-width:560px}
 .bin-art svg{width:100%;height:auto;display:block;overflow:visible}
 .bin-art .jet{stroke:#FFFDF5;stroke-width:2.6;stroke-linecap:round;stroke-dasharray:7 7;fill:none}
 @media (prefers-reduced-motion:no-preference){
   .bin-art .jet{animation:jet .26s linear infinite}
   .bin-art .sun-rays{animation:spin 18s linear infinite;transform-box:view-box;transform-origin:0 0}
   .bin-art .sun{animation:sunBob 3s ease-in-out infinite alternate}
+  .bin-art .boombox{animation:thump .5s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+  .bin-art .spk{animation:speaker .5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+  .bin-art .note{animation:noteUp 2.8s ease-out infinite}
+  .bin-art .lyric{animation:lyric 1s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}
+  @keyframes thump{0%,100%{transform:scale(1,1)}50%{transform:scale(1.03,.96)}}
+  @keyframes speaker{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+  @keyframes noteUp{0%{transform:translate(0,0);opacity:0}15%{opacity:1}100%{transform:translate(var(--nx),-44px) rotate(12deg);opacity:0}}
+  @keyframes lyric{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
   .bin-art .sun-wave{animation:sunWave 2.4s ease-in-out infinite;transform-box:view-box;transform-origin:-28px 16px}
   @keyframes sunWave{0%,55%,100%{transform:rotate(0)}10%,30%{transform:rotate(-22deg)}20%,40%{transform:rotate(10deg)}}
   @keyframes spin{to{transform:rotate(360deg)}}
@@ -199,7 +207,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
 
 @media (max-width:860px){
   .hero,.included,.signup{grid-template-columns:1fr}
-  .bin-art{max-width:380px;order:-1;justify-self:start}
+  .bin-art{max-width:420px;order:-1;justify-self:start}
   .steps{grid-template-columns:1fr 1fr}
   .faq{grid-template-columns:1fr}
 }
@@ -366,7 +374,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
       </div>
     </div>
     <div class="bin-art" aria-hidden="true" data-parallax="-.18">
-      <svg viewBox="0 -98 430 394" id="canArt">
+      <svg viewBox="0 -98 522 394" id="canArt">
         <g class="sun" stroke="#16161D" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" transform="translate(326 -12) scale(1.42)">
           <g class="sun-rays" fill="#FFB020"><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(0)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(30)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(60)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(90)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(120)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(150)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(180)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(210)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(240)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(270)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(300)" /><path d="M-7 -40 L0 -58 L7 -40 Z" transform="rotate(330)" /></g>
           <g class="sun-wave">
@@ -489,6 +497,36 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
             <path d="M118 92 q-4 4 0 8" fill="none" stroke-width="3"/>
             </g>
           </g>
+        </g>
+        <!-- boombox -->
+        <ellipse cx="462" cy="280" rx="52" ry="9" fill="#16161D"/>
+        <g class="boombox" stroke="#16161D" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M432 226 V212 Q432 204 440 204 H484 Q492 204 492 212 V226" fill="none" stroke-width="7"/>
+          <path d="M432 226 V212 Q432 204 440 204 H484 Q492 204 492 212 V226" fill="none" stroke="#7B3FE4" stroke-width="2.5"/>
+          <rect x="414" y="222" width="96" height="54" rx="10" fill="#D9558F"/>
+          <rect x="420" y="228" width="84" height="6" rx="3" fill="#F59BE0" stroke="none"/>
+          <circle class="spk" cx="436" cy="252" r="15" fill="#FFFDF5"/><circle class="spk" cx="488" cy="252" r="15" fill="#FFFDF5"/>
+          <circle cx="436" cy="252" r="8" fill="#16161D" stroke="none"/><circle cx="488" cy="252" r="8" fill="#16161D" stroke="none"/>
+          <circle cx="433" cy="249" r="2.4" fill="#6C7BFF" stroke="none"/><circle cx="485" cy="249" r="2.4" fill="#6C7BFF" stroke="none"/>
+          <rect x="453" y="240" width="18" height="12" rx="2" fill="#B6F24A" stroke-width="2.5"/>
+          <circle cx="458" cy="246" r="2" fill="#16161D" stroke="none"/><circle cx="466" cy="246" r="2" fill="#16161D" stroke="none"/>
+          <path d="M452 262 h4 M459 262 h4 M466 262 h4" stroke-width="3"/>
+          <rect x="440" y="216" width="8" height="6" rx="1.5" fill="#FFD84A" stroke-width="2.2"/><rect x="476" y="216" width="8" height="6" rx="1.5" fill="#B6F24A" stroke-width="2.2"/>
+        </g>
+        <g class="notes">
+          <g class="note" style="--nx:-18px;animation-delay:0s"><g transform="translate(430 226)"><g fill="#B6F24A" stroke="#16161D" stroke-width="2" stroke-linejoin="round"><path d="M0 0 V-15 L10 -18 V-3" fill="none" stroke-width="3"/><path d="M0 0 V-15 L10 -18 V-3" fill="none" stroke="#B6F24A" stroke-width="1.2"/><ellipse cx="-3" cy="0" rx="4" ry="3"/><ellipse cx="7" cy="-3" rx="4" ry="3"/></g></g></g>
+          <g class="note" style="--nx:16px;animation-delay:-.7s"><g transform="translate(486 226)"><g fill="#6C7BFF" stroke="#16161D" stroke-width="2" stroke-linejoin="round"><path d="M0 0 V-15 L10 -18 V-3" fill="none" stroke-width="3"/><path d="M0 0 V-15 L10 -18 V-3" fill="none" stroke="#6C7BFF" stroke-width="1.2"/><ellipse cx="-3" cy="0" rx="4" ry="3"/><ellipse cx="7" cy="-3" rx="4" ry="3"/></g></g></g>
+          <g class="note" style="--nx:-8px;animation-delay:-1.4s"><g transform="translate(462 214) scale(.85)"><g fill="#F59BE0" stroke="#16161D" stroke-width="2" stroke-linejoin="round"><path d="M0 0 V-15 L10 -18 V-3" fill="none" stroke-width="3"/><path d="M0 0 V-15 L10 -18 V-3" fill="none" stroke="#F59BE0" stroke-width="1.2"/><ellipse cx="-3" cy="0" rx="4" ry="3"/><ellipse cx="7" cy="-3" rx="4" ry="3"/></g></g></g>
+          <g class="note" style="--nx:20px;animation-delay:-2.1s"><g transform="translate(500 222) scale(.8)"><g fill="#FFD84A" stroke="#16161D" stroke-width="2" stroke-linejoin="round"><path d="M0 0 V-15 L10 -18 V-3" fill="none" stroke-width="3"/><path d="M0 0 V-15 L10 -18 V-3" fill="none" stroke="#FFD84A" stroke-width="1.2"/><ellipse cx="-3" cy="0" rx="4" ry="3"/><ellipse cx="7" cy="-3" rx="4" ry="3"/></g></g></g>
+        </g>
+        <g class="lyric">
+          <g stroke="#16161D" stroke-width="3" stroke-linejoin="round">
+            <path d="M452 170 L462 196 L472 170" fill="#FFFDF5"/>
+            <rect x="416" y="124" width="96" height="48" rx="16" fill="#FFFDF5"/>
+            <path d="M454 169 H470" stroke="#FFFDF5" stroke-width="5"/>
+          </g>
+          <text x="464" y="144" text-anchor="middle" font-size="14" font-weight="800" fill="#16161D" style="font-family:var(--display)">so fresh,</text>
+          <text x="464" y="162" text-anchor="middle" font-size="14" font-weight="800" fill="#D9558F" style="font-family:var(--display)">so clean</text>
         </g>
         <g class="sparkles" stroke="#16161D" stroke-width="2.5" stroke-linejoin="round"><g style="transform-origin:300px 128px"><path d="M300 116Q302.16 125.84 312 128Q302.16 130.16 300 140Q297.84 130.16 288 128Q297.84 125.84 300 116Z" fill="#B6F24A"/></g><g style="transform-origin:414px 160px"><path d="M414 150Q415.8 158.2 424 160Q415.8 161.8 414 170Q412.2 161.8 404 160Q412.2 158.2 414 150Z" fill="#6C7BFF"/></g><g style="transform-origin:376px 204px"><path d="M376 195Q377.62 202.38 385 204Q377.62 205.62 376 213Q374.38 205.62 367 204Q374.38 202.38 376 195Z" fill="#F59BE0"/></g><g style="transform-origin:344px 104px"><path d="M344 96Q345.44 102.56 352 104Q345.44 105.44 344 112Q342.56 105.44 336 104Q342.56 102.56 344 96Z" fill="#7FE3FF"/></g></g>
       </svg>
