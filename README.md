@@ -1,4 +1,4 @@
-# Cruz's Can Cleaning
+# Cruz Can Clean
 
 One-page website for Cruz's trash and recycling can cleaning business in Willowsford's Grove (Aldie, VA).
 
