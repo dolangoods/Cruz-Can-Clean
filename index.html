@@ -59,14 +59,14 @@ header.top{display:flex;justify-content:space-between;align-items:center;gap:16p
 .btn.primary:hover{filter:brightness(1.08)}
 .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
 .btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--ink)}
-.bin-art{justify-self:center;width:100%;max-width:400px}
+.bin-art{justify-self:center;width:100%;max-width:470px}
 .bin-art svg{width:100%;height:auto;display:block;overflow:visible}
-.bin-art .jet{stroke:var(--water);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:6 7;fill:none}
+.bin-art .jet{stroke:var(--water);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:6 7;fill:none}
 @media (prefers-reduced-motion:no-preference){
   .bin-art .jet{animation:jet .28s linear infinite}
-  .bin-art .aim{animation:aim 1.1s ease-in-out infinite alternate}
+  .bin-art .wave{animation:wave 1.6s ease-in-out infinite;transform-origin:178px 156px}
   @keyframes jet{to{stroke-dashoffset:-26}}
-  @keyframes aim{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
+  @keyframes wave{0%,60%,100%{transform:rotate(0)}70%{transform:rotate(-12deg)}80%{transform:rotate(6deg)}90%{transform:rotate(-8deg)}}
 }
 
 /* Week strip */
@@ -183,7 +183,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
 
 @media (max-width:860px){
   .hero,.included,.signup{grid-template-columns:1fr}
-  .bin-art{max-width:300px;order:-1;justify-self:start}
+  .bin-art{max-width:360px;order:-1;justify-self:start}
   .steps{grid-template-columns:1fr 1fr}
   .faq{grid-template-columns:1fr}
 }
@@ -232,48 +232,70 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
       </div>
     </div>
     <div class="bin-art" aria-hidden="true" data-parallax="-.18">
-      <svg viewBox="-30 -50 360 290" id="canArt">
-        <g transform="translate(30 0)">
-          <ellipse cx="120" cy="222" rx="80" ry="10" fill="var(--line)"/>
-          <ellipse class="puddle" cx="52" cy="226" rx="30" ry="6" fill="#7A5A36" opacity="0"/>
-          <path d="M64 70 L176 70 L166 214 L74 214 Z" fill="var(--water)"/>
-          <path d="M78 86 L86 204" stroke="var(--ground)" stroke-width="5" stroke-linecap="round" opacity=".35"/>
-          <circle cx="86" cy="214" r="9" fill="var(--ink)"/><circle cx="154" cy="214" r="9" fill="var(--ink)"/>
-          <g class="drips" stroke="var(--dirt-dark)" stroke-linecap="round">
-            <path d="M84 72 v34" stroke-width="5"/><path d="M103 72 v18" stroke-width="3.5"/>
-            <path d="M126 72 v48" stroke-width="4"/><path d="M147 72 v24" stroke-width="5.5"/><path d="M160 72 v40" stroke-width="3"/>
-          </g>
-          <ellipse class="hole" cx="120" cy="70" rx="56" ry="7" fill="#4A3520" opacity="0"/>
-          <g class="lid">
-            <rect x="52" y="54" width="136" height="20" rx="6" fill="var(--ink)"/>
-            <rect x="100" y="44" width="40" height="12" rx="4" fill="var(--ink)"/>
-          </g>
-          <g class="stink" fill="none" stroke="var(--stink)" stroke-width="3" stroke-linecap="round" opacity=".85">
-            <path d="M96 38 q-7 -7 0 -13 q7 -6 0 -13"/><path d="M120 34 q-7 -7 0 -13 q7 -6 0 -13"/><path d="M144 38 q-7 -7 0 -13 q7 -6 0 -13"/>
-          </g>
-          <g class="gunk"></g>
-          <g class="wand" opacity="0">
-            <g transform="rotate(60) scale(-1 1)">
-              <g class="aim">
-                <g class="spray">
-                  <polygon points="0,-2 -74,-11 -74,11 0,2" fill="var(--water)" opacity=".28"/>
-                  <path class="jet" d="M0 0 L-74 -7"/><path class="jet" d="M0 0 L-74 0"/><path class="jet" d="M0 0 L-74 7"/>
-                </g>
-                <path d="M82 24 C 88 62, 140 58, 190 96" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
-                <rect x="4" y="-2" width="58" height="4" rx="2" fill="var(--ink)"/>
-                <rect x="-3" y="-3.5" width="9" height="7" rx="1.5" fill="var(--sun)" stroke="var(--ink)" stroke-width="1.5"/>
-                <rect x="76" y="3" width="11" height="24" rx="4" fill="var(--ink)" transform="rotate(14 81 3)"/>
-                <path d="M70 5 q2 9 8 11" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                <rect x="60" y="-7" width="32" height="13" rx="4" fill="var(--sun)" stroke="var(--ink)" stroke-width="2"/>
-              </g>
+      <svg viewBox="0 20 400 270" id="canArt">
+        <circle cx="122" cy="146" r="100" fill="var(--water-soft)"/>
+        <ellipse cx="210" cy="274" rx="180" ry="9" fill="var(--line)"/>
+        <ellipse class="puddle" cx="300" cy="276" rx="48" ry="7" fill="#7A5A36" stroke="#12302A" stroke-width="2.5" opacity="0"/>
+        <g class="cruz" stroke="#12302A" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M112 176 C 110 214, 176 206, 172 244 C 170 262, 150 268, 160 276" fill="none" stroke-width="3.5"/>
+          <path d="M92 192 L90 262 L116 262 L119 196 Z" fill="#2B5C8A"/>
+          <path d="M121 196 L125 262 L151 262 L149 192 Z" fill="#2B5C8A"/>
+          <path d="M78 270 Q80 256 104 258 Q118 259 118 270 Z" fill="#12302A"/>
+          <path d="M124 270 Q124 259 138 258 Q162 256 164 270 Z" fill="#12302A"/>
+          <path d="M80 271 H117 M125 271 H163" stroke="#FFFFFF" stroke-width="2.5"/>
+          <path d="M82 124 Q120 106 158 124 L162 196 Q120 206 80 196 Z" fill="#F4C542"/>
+          <g class="thumb" style="transform-origin:156px 130px">
+            <g class="wave">
+              <path d="M154 126 Q176 128 182 152 L168 158 Q164 142 152 142 Z" fill="#F4C542"/>
+              <path d="M168 156 q-2 -12 8 -14 l1 -9 q1 -6 6 -5 q4 1 3 7 l-2 8 q8 0 8 6 q0 3 -2 4 q3 2 1 6 q2 3 -2 6 q-2 4 -10 4 q-9 0 -11 -13 z" fill="#F2C09A"/>
             </g>
           </g>
-          <g class="sparkles" fill="var(--sun)">
-            <path d="M200 26l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:200px 36px"/>
-            <path d="M44 40l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:44px 50px"/>
-            <path d="M150 110l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:150px 120px"/>
-            <path d="M96 16l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:96px 26px"/>
+          <path d="M86 126 Q70 150 84 170 L100 166 Q92 150 100 136 Z" fill="#F4C542"/>
+          <g class="gun">
+            <g class="spray" transform="translate(212 126) rotate(-13)" opacity="0">
+              <polygon points="0,-2 84,-13 84,13 0,2" fill="var(--water)" opacity=".3" stroke="none"/>
+              <path class="jet" d="M0 0 L84 -8"/><path class="jet" d="M0 0 L84 0"/><path class="jet" d="M0 0 L84 8"/>
+            </g>
+            <path d="M110 150 L204 128" stroke-width="7"/>
+            <path d="M110 150 L204 128" stroke="#9AA9A4" stroke-width="3"/>
+            <rect x="200" y="122" width="14" height="10" rx="2" fill="#F4C542" transform="rotate(-13 207 127)"/>
+            <path d="M96 142 L126 136 L128 150 L100 156 Z" fill="#1286A0"/>
+            <path d="M104 154 L102 178 L114 178 L116 152 Z" fill="#12302A"/>
+            <path d="M92 160 q-2 -12 10 -12 q12 0 14 8 q2 10 -4 14 q-8 4 -14 0 q-6 -3 -6 -10 z" fill="#F2C09A"/>
+            <path d="M100 156 q6 -2 12 0 M99 162 q6 -2 12 0" fill="none" stroke-width="2.5"/>
           </g>
+          <circle cx="90" cy="86" r="8" fill="#F2C09A"/>
+          <path d="M92 64 Q88 122 120 122 Q152 122 148 64 Z" fill="#F2C09A"/>
+          <path d="M92 70 Q88 82 94 88 L98 72 Z" fill="#3A2A20" stroke-width="3"/>
+          <path d="M88 72 Q86 38 120 36 Q154 36 152 70 Z" fill="#1286A0"/>
+          <path d="M140 64 Q170 58 178 70 Q170 78 146 76 Z" fill="#0E6A80"/>
+          <path d="M88 72 Q120 64 152 70" fill="none"/>
+          <circle cx="120" cy="38" r="3.5" fill="#0E6A80" stroke-width="3"/>
+          <path d="M106 78 q5 -4 10 0 M128 78 q5 -4 10 0" fill="none" stroke-width="3"/>
+          <ellipse cx="111" cy="86" rx="3.4" ry="4.6" fill="#12302A" stroke="none"/>
+          <ellipse cx="133" cy="86" rx="3.4" ry="4.6" fill="#12302A" stroke="none"/>
+          <path d="M107 96 Q121 97 136 95 Q134 110 122 110 Q109 110 107 96 Z" fill="#8E2A22" stroke-width="3.5"/>
+          <path d="M109 97.5 Q121 98.5 134 96.5 L133.5 100.5 Q121 102 109.5 101.5 Z" fill="#FFFFFF" stroke="none"/>
+          <path d="M115 107 Q122 102.5 129 106 Q123 110 115 107 Z" fill="#E86A5C" stroke="none"/>
+          <circle cx="101" cy="97" r="4" fill="#F29C86" stroke="none" opacity=".7"/>
+          <circle cx="142" cy="95" r="4" fill="#F29C86" stroke="none" opacity=".7"/>
+        </g>
+        <g transform="translate(210 98) scale(.78)" stroke="#12302A" stroke-width="5" stroke-linejoin="round">
+          <path d="M64 70 L176 70 L166 214 L74 214 Z" fill="var(--water)"/>
+          <path d="M80 88 L88 200" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity=".35"/>
+          <circle cx="86" cy="214" r="10" fill="#12302A"/><circle cx="154" cy="214" r="10" fill="#12302A"/>
+          <rect x="52" y="54" width="136" height="20" rx="6" fill="#1D4A3F"/>
+          <rect x="100" y="44" width="40" height="12" rx="4" fill="#1D4A3F"/>
+          <g class="dirt" stroke-width="2.5"></g>
+          <g class="stink" fill="none" stroke="var(--stink)" stroke-width="4" stroke-linecap="round">
+            <path d="M96 36 q-7 -7 0 -13 q7 -6 0 -13"/><path d="M120 32 q-7 -7 0 -13 q7 -6 0 -13"/><path d="M144 36 q-7 -7 0 -13 q7 -6 0 -13"/>
+          </g>
+        </g>
+        <g class="sparkles" fill="var(--sun)" stroke="#12302A" stroke-width="2" stroke-linejoin="round">
+          <path d="M252 124l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:252px 134px"/>
+          <path d="M372 140l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:372px 150px"/>
+          <path d="M328 196l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:328px 206px"/>
+          <path d="M300 100l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:300px 110px"/>
         </g>
       </svg>
     </div>
@@ -476,67 +498,64 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
   reduce.addEventListener?.('change', queue);
   update();
 
-  // Hero can: lid flips open, washer blasts gunk out, puddle rinses clear, sparkles. One loop = 6s.
+  // Hero: cartoon Cruz sweeps the wand down the can, dirt blasts off, puddle rinses clear, thumbs up + sparkles. One loop = 6s.
   (function(){
-    const svg = document.getElementById('canArt'), D = 6000, S0 = .2, S1 = .64, anims = [];
+    const svg = document.getElementById('canArt'), D = 6000, S0 = .14, S1 = .62, anims = [];
     const q = sel => svg.querySelector(sel);
     const loop = (node, frames) => anims.push(node.animate(frames, { duration: D, iterations: Infinity }));
     const T = (x, y) => `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
     let seed = 7;
     const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
     const between = (a, b) => a + rnd() * (b - a);
-
-    q('.lid').style.transformOrigin = '186px 64px';
-    loop(q('.lid'), [
+    // Wand pivots on Cruz's grip. Rest pose points up at -13deg; the spray sweeps from 8deg to 35deg below horizontal.
+    const A0 = 8, A1 = 35, REST = -13;
+    q('.gun').style.transformOrigin = '110px 152px';
+    loop(q('.gun'), [
       { offset: 0, transform: 'rotate(0deg)' },
-      { offset: .05, transform: 'rotate(0deg)', easing: 'ease-in-out' },
-      { offset: .15, transform: 'rotate(250deg)' },
-      { offset: .74, transform: 'rotate(250deg)', easing: 'ease-in-out' },
-      { offset: .85, transform: 'rotate(0deg)' },
+      { offset: .07, transform: 'rotate(0deg)', easing: 'ease-in-out' },
+      { offset: S0, transform: `rotate(${A0 - REST}deg)` },
+      { offset: S1, transform: `rotate(${A1 - REST}deg)`, easing: 'ease-in-out' },
+      { offset: .7, transform: 'rotate(0deg)' },
       { offset: 1, transform: 'rotate(0deg)' }
-    ]);
-    loop(q('.hole'), [
-      { offset: 0, opacity: 0, fill: '#4A3520' }, { offset: .07, opacity: 0, fill: '#4A3520' },
-      { offset: .1, opacity: 1, fill: '#4A3520' }, { offset: S0 + .05, opacity: 1, fill: '#4A3520' },
-      { offset: S1, opacity: 1, fill: '#12302A' }, { offset: .8, opacity: 1, fill: '#12302A' },
-      { offset: .83, opacity: 0, fill: '#12302A' }, { offset: 1, opacity: 0, fill: '#4A3520' }
-    ]);
-    loop(q('.stink'), [
-      { offset: 0, opacity: .85, transform: T(0, 0) }, { offset: .05, opacity: .85, transform: T(0, 0) },
-      { offset: .12, opacity: 0, transform: T(0, -14) }, { offset: .95, opacity: 0, transform: T(0, 0) },
-      { offset: 1, opacity: .85, transform: T(0, 0) }
-    ]);
-    loop(q('.wand'), [
-      { offset: 0, transform: T(10, -70), opacity: 0 }, { offset: .12, transform: T(10, -70), opacity: 0 },
-      { offset: .18, transform: T(78, 6), opacity: 1 }, { offset: S1, transform: T(78, 6), opacity: 1 },
-      { offset: .7, transform: T(10, -70), opacity: 0 }, { offset: 1, transform: T(10, -70), opacity: 0 }
     ]);
     loop(q('.spray'), [
       { offset: 0, opacity: 0 }, { offset: S0, opacity: 0 }, { offset: S0 + .01, opacity: 1 },
       { offset: S1, opacity: 1 }, { offset: S1 + .01, opacity: 0 }, { offset: 1, opacity: 0 }
     ]);
-    loop(q('.drips'), [
-      { offset: 0, opacity: 1 }, { offset: S0 + .1, opacity: 1 }, { offset: S1, opacity: 0 },
-      { offset: .95, opacity: 0 }, { offset: 1, opacity: 1 }
+    // Thumbs-up arm drops out of the way while spraying, then pops back up
+    loop(q('.thumb'), [
+      { offset: 0, transform: 'rotate(-30deg)' }, { offset: .07, transform: 'rotate(-30deg)', easing: 'ease-in-out' },
+      { offset: S0, transform: 'rotate(-60deg)' }, { offset: S1 + .02, transform: 'rotate(-60deg)', easing: 'ease-out' },
+      { offset: .72, transform: 'rotate(-30deg)' }, { offset: 1, transform: 'rotate(-30deg)' }
     ]);
-    const dirt = ['var(--dirt)', 'var(--dirt-dark)', 'var(--grime)'], gunk = q('.gunk');
-    for (let i = 0; i < 24; i++){
-      const x = between(96, 146), r = between(3, 7);
-      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      g.innerHTML = `<ellipse cx="${x.toFixed(1)}" cy="70" rx="${r.toFixed(1)}" ry="${(r * between(.55, .9)).toFixed(1)}" fill="${dirt[i % 3]}" transform="rotate(${between(-40, 40).toFixed(0)} ${x.toFixed(1)} 70)"/>`;
-      g.style.opacity = 0;
-      gunk.appendChild(g);
-      const o = between(S0 + .02, S1 - .04), dx = (rnd() - .5) * 170, up = between(40, 95);
+    loop(q('.stink'), [
+      { offset: 0, opacity: 1, transform: T(0, 0) }, { offset: S0, opacity: 1, transform: T(0, -4) },
+      { offset: S0 + .08, opacity: 0, transform: T(0, -16) }, { offset: .92, opacity: 0, transform: T(0, 0) },
+      { offset: 1, opacity: 1, transform: T(0, 0) }
+    ]);
+    // Dirt on the can (can-local coords, scaled .78 and shifted by 210,98 in the scene)
+    const NS = 'http://www.w3.org/2000/svg', dirt = q('.dirt'), colors = ['#7A5A36', '#5C4127', '#8B7A4A'];
+    const leftAt = y => 64 + (y - 70) * 10 / 144, rightAt = y => 176 - (y - 70) * 10 / 144;
+    for (let i = 0; i < 34; i++){
+      const y = between(80, 204), x = between(leftAt(y) + 8, rightAt(y) - 8), r = between(4, 9);
+      const g = document.createElementNS(NS, 'g');
+      g.innerHTML = `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${r.toFixed(1)}" ry="${(r * between(.55, .85)).toFixed(1)}" fill="${colors[i % 3]}" transform="rotate(${between(-40, 40).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`;
+      dirt.appendChild(g);
+      // When does the spray reach this height? Angle from the grip (110,152) to the can's left edge (~145 units away).
+      const sceneY = 98 + .78 * y, ang = Math.atan2(sceneY - 152, 145) * 180 / Math.PI;
+      const o = S0 + Math.min(1, Math.max(0, (ang - A0) / (A1 - A0))) * (S1 - S0);
+      const dx = between(25, 70), dy = between(40, 80);
       loop(g, [
-        { offset: 0, transform: T(0, 0), opacity: 0 },
-        { offset: o, transform: T(0, 0), opacity: 0 },
-        { offset: o + .005, transform: T(0, 0), opacity: 1, easing: 'ease-out' },
-        { offset: o + .05, transform: T(dx * .45, -up), opacity: 1, easing: 'ease-in' },
-        { offset: o + .13, transform: T(dx, 150), opacity: 0 },
-        { offset: 1, transform: T(dx, 150), opacity: 0 }
+        { offset: 0, transform: T(0, 0), opacity: 1 },
+        { offset: o, transform: T(0, 0), opacity: 1 },
+        { offset: o + .04, transform: T(dx * .4, -12), opacity: 1 },
+        { offset: o + .13, transform: T(dx, dy), opacity: 0 },
+        { offset: .9, transform: T(0, 0), opacity: 0 },
+        { offset: .97, transform: T(0, 0), opacity: 1 },
+        { offset: 1, transform: T(0, 0), opacity: 1 }
       ]);
     }
-    q('.puddle').style.transformOrigin = '52px 226px';
+    q('.puddle').style.transformOrigin = '300px 276px';
     loop(q('.puddle'), [
       { offset: 0, transform: 'scale(0)', opacity: 1, fill: '#7A5A36' },
       { offset: S0 + .05, transform: 'scale(0)', opacity: 1, fill: '#7A5A36' },
@@ -546,16 +565,16 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
       { offset: 1, transform: 'scale(0)', opacity: 0, fill: '#7A5A36' }
     ]);
     svg.querySelectorAll('.sparkles path').forEach((p, i) => {
-      const o = .8 + i * .02, s = [1.1, .8, .7, .9][i];
+      const o = .7 + i * .03, s = [1.1, .9, .8, 1][i];
       loop(p, [
         { offset: 0, transform: 'scale(0)' }, { offset: o, transform: 'scale(0)' },
-        { offset: o + .05, transform: `scale(${s * 1.25})` }, { offset: o + .09, transform: `scale(${s})` },
-        { offset: .96, transform: `scale(${s})` }, { offset: 1, transform: 'scale(0)' }
+        { offset: o + .05, transform: `scale(${s * 1.3})` }, { offset: o + .09, transform: `scale(${s})` },
+        { offset: .94, transform: `scale(${s})` }, { offset: 1, transform: 'scale(0)' }
       ]);
     });
-    // Reduced motion: hold on the clean, sparkling can
+    // Reduced motion: hold on the clean can with Cruz giving a thumbs up
     function applyMotion(){
-      anims.forEach(a => { if (reduce.matches){ a.pause(); a.currentTime = D * .9; } else a.play(); });
+      anims.forEach(a => { if (reduce.matches){ a.pause(); a.currentTime = D * .85; } else a.play(); });
     }
     reduce.addEventListener?.('change', applyMotion);
     applyMotion();
