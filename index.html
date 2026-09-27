@@ -165,26 +165,13 @@ section > h2{font-size:clamp(32px,5vw,48px);margin-bottom:12px}
 
 /* Sign up */
 .signup{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
-form{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;display:grid;gap:18px}
-.field{display:grid;gap:6px}
-.field label,.field legend{font-weight:600;font-size:14px}
-input[type=text],input[type=tel],textarea{font:inherit;color:var(--ink);background:var(--ground);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
-input:focus,textarea:focus{border-color:var(--water);outline:none}
-fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip input{position:absolute;opacity:0;pointer-events:none}
-.chip span{display:inline-block;padding:9px 14px;border-radius:999px;border:1.5px solid var(--line);cursor:pointer;font-size:15px;background:var(--ground)}
-.chip input:checked + span{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-.chip input:focus-visible + span{outline:3px solid var(--water);outline-offset:2px}
 .hint{font-size:13px;color:var(--muted)}
-.result{background:var(--water-soft);border-radius:16px;padding:18px;display:grid;gap:12px}
-.result pre{margin:0;white-space:pre-wrap;font:14px/1.5 var(--mono);color:var(--ink)}
-.result .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .contact{margin-top:20px;display:grid;gap:4px}
 .contact .num{font-family:var(--display);font-weight:800;font-size:30px;user-select:all}
-.err{color:#B3261E;font-size:14px}
-:root[data-theme="dark"] .err{color:#FF9A8F}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .err{color:#FF9A8F}}
+.signup h2{font-size:clamp(32px,5vw,48px);margin-bottom:12px}
+.booking{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:8px;min-width:0}
+#cal-booking{width:100%;min-height:620px;overflow:auto;border-radius:16px}
+.booking .fallback{padding:10px 12px 6px;font-size:14px;color:var(--muted)}
 
 /* FAQ */
 .faq{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;margin-top:28px}
@@ -293,7 +280,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
       <svg width="60" height="60" viewBox="88 24 104 104" style="overflow:visible" aria-hidden="true"><use href="#cruz-badge"/></svg>
       Cruz Can Clean
     </div>
-    <a class="cta-sm" href="#signup">Sign up</a>
+    <a class="cta-sm" href="#signup">Book</a>
   </header>
 
   <div class="hero">
@@ -304,7 +291,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
       <div class="price"><b>$15</b><span>per Saturday clean</span></div>
       <p class="pay">Pay with <b>cash</b> or Venmo <b style="user-select:all">@NVD-17</b></p>
       <div class="actions">
-        <a class="btn primary" href="#signup">Get on the list</a>
+        <a class="btn primary" href="#signup">Book a Saturday</a>
         <a class="btn ghost" href="#how">How it works</a>
       </div>
     </div>
@@ -438,7 +425,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
     <h2>How it works</h2>
     <p class="sub">Your bins are already empty and already at the curb after Friday's pickup. That's the whole trick.</p>
     <div class="steps" data-parallax="-.06">
-      <div class="step"><span class="n">STEP 1</span><h3>Sign up</h3><p>Fill out the form below with your address in The Grove and which bins you want cleaned.</p></div>
+      <div class="step"><span class="n">STEP 1</span><h3>Book a slot</h3><p>Pick one of the four Saturday spots below and add your address in The Grove and which bins you want cleaned.</p></div>
       <div class="step"><span class="n">STEP 2</span><h3>Leave them out</h3><p>After Friday's pickup, leave your empty bins at the curb overnight, and make sure I can get to your outdoor hose and power outlet.</p></div>
       <div class="step"><span class="n">STEP 3</span><h3>Saturday power wash</h3><p>Saturday morning I power wash each can inside and out with soap and degreaser.</p></div>
       <div class="step"><span class="n">STEP 4</span><h3>Back by your garage</h3><p>Clean bins get rolled back up your driveway, drip-dried and smelling fresh.</p></div>
@@ -511,50 +498,18 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
 
   <section id="signup" class="signup">
     <div>
-      <h2>Get on the list</h2>
-      <p class="sub">Fill this out and it'll put together a message you can send me. I'll confirm your first Saturday.</p>
+      <h2>Book a Saturday</h2>
+      <p class="sub">Four spots every Saturday morning, first come, first served. Pick an open one, add your address in The Grove and which bins, and I'll be there after Friday pickup. $15 per clean, cash or Venmo @NVD-17.</p>
       <div class="contact">
-        <span class="label">Text or call Cruz</span>
+        <span class="label">Rather text or call Cruz?</span>
         <span class="num" id="phone">(703) 408-0701</span>
         <button class="btn ghost" type="button" id="copyPhone" style="justify-self:start;padding:10px 16px;font-size:14px">Copy number</button>
       </div>
     </div>
-    <form id="form" novalidate data-parallax="-.04">
-      <div class="field"><label for="name">Your name</label><input id="name" type="text" autocomplete="name" placeholder="Jamie Rivera"></div>
-      <div class="field"><label for="addr">Street address in The Grove</label><input id="addr" type="text" autocomplete="street-address" placeholder="e.g. 41000 Grove Lane"><span class="hint">Service is only available in Willowsford's Grove section.</span></div>
-      <fieldset>
-        <legend>Which bins?</legend>
-        <div class="chips">
-          <label class="chip"><input type="radio" name="bins" id="bins-both" value="Trash and recycling" checked><span>Both</span></label>
-          <label class="chip"><input type="radio" name="bins" id="bins-trash" value="Trash only"><span>Trash only</span></label>
-          <label class="chip"><input type="radio" name="bins" id="bins-rec" value="Recycling only"><span>Recycling only</span></label>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>How often? <span class="hint">$15 each clean, cash or Venmo @NVD-17</span></legend>
-        <div class="chips">
-          <label class="chip"><input type="radio" name="freq" id="f-once" value="One-time clean" checked><span>One time</span></label>
-          <label class="chip"><input type="radio" name="freq" id="f-month" value="Once a month"><span>Monthly</span></label>
-          <label class="chip"><input type="radio" name="freq" id="f-2wk" value="Every other Saturday"><span>Every other week</span></label>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>Can Cruz use your outdoor hose and power outlet?</legend>
-        <div class="chips">
-          <label class="chip"><input type="radio" name="util" id="u-yes" value="Yes, both are available" checked><span>Yes, both</span></label>
-          <label class="chip"><input type="radio" name="util" id="u-ns" value="Not sure, let's talk"><span>Not sure</span></label>
-        </div>
-      </fieldset>
-      <div class="field"><label for="phoneIn">Your phone</label><input id="phoneIn" type="tel" autocomplete="tel" placeholder="(703) 555-0123"></div>
-      <div class="field"><label for="notes">Anything I should know? <span class="hint">(optional)</span></label><textarea id="notes" rows="2" placeholder="Gate code, dog in the yard, extra-gross can…"></textarea></div>
-      <p class="err" id="err" hidden></p>
-      <button class="btn primary" type="submit" style="justify-self:start">Make my message</button>
-      <div class="result" id="result" hidden>
-        <span class="label">Send this to Cruz</span>
-        <pre id="msg"></pre>
-        <div class="row"><button class="btn primary" type="button" id="copyMsg" style="padding:10px 16px;font-size:14px">Copy message</button><span class="hint" id="copied" aria-live="polite"></span></div>
-      </div>
-    </form>
+    <div class="booking">
+      <div id="cal-booking"></div>
+      <p class="fallback">Calendar not loading? <a href="https://cal.com/cruz-can-clean" target="_blank" rel="noopener">Book at cal.com/cruz-can-clean</a></p>
+    </div>
   </section>
 
   <section>
@@ -581,17 +536,12 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
     try{ navigator.clipboard.writeText(text).then(()=>done('Copied'), fallback); }catch(e){ fallback(); }
   }
   $('copyPhone').addEventListener('click', e => copy($('phone').textContent, $('phone'), t => { e.target.textContent = t; setTimeout(()=>e.target.textContent='Copy number',1800); }));
-  $('form').addEventListener('submit', e => {
-    e.preventDefault();
-    const name=$('name').value.trim(), addr=$('addr').value.trim(), ph=$('phoneIn').value.trim(), notes=$('notes').value.trim();
-    const missing=[]; if(!name)missing.push('your name'); if(!addr)missing.push('your address'); if(!ph)missing.push('your phone');
-    if(missing.length){ $('err').textContent='Add '+missing.join(', ')+' so Cruz can reach you.'; $('err').hidden=false; $('result').hidden=true; return; }
-    $('err').hidden=true;
-    const bins=document.querySelector('input[name=bins]:checked').value, freq=document.querySelector('input[name=freq]:checked').value, util=document.querySelector('input[name=util]:checked').value;
-    $('msg').textContent = `Hi Cruz! I'd like my cans cleaned.\nName: ${name}\nAddress: ${addr} (The Grove)\nBins: ${bins}\nHow often: ${freq} ($15 per clean)\nHose & outdoor outlet: ${util}\nPhone: ${ph}` + (notes?`\nNotes: ${notes}`:'');
-    $('result').hidden=false; $('copied').textContent='';
-  });
-  $('copyMsg').addEventListener('click', () => copy($('msg').textContent, $('msg'), t => $('copied').textContent=t));
+
+  // Cal.com inline booking calendar (loads https://app.cal.com/embed/embed.js)
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "booking", { origin: "https://cal.com" });
+  Cal.ns.booking("inline", { elementOrSelector: "#cal-booking", calLink: "cruz-can-clean", config: { layout: "month_view" } });
+  Cal.ns.booking("ui", { cssVarsPerTheme: { light: { "cal-brand": "#1286A0" }, dark: { "cal-brand": "#4FC3DA" } }, hideEventTypeDetails: false, layout: "month_view" });
 
   // Parallax: [data-parallax] shifts by its distance from the viewport center; .bubbles drift with scroll depth
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
