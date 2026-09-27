@@ -12,6 +12,7 @@
 :root{
   --ground:#EEF4F1; --surface:#FFFFFF; --ink:#12302A; --muted:#4E6861; --line:#CFDDD7;
   --water:#1286A0; --water-soft:#D6EEF2; --sun:#F4C542; --sun-ink:#12302A; --pine:#1D4A3F;
+  --dirt:#7A5A36; --dirt-dark:#5C4127; --grime:#8B7A4A; --stink:#8C9A3C;
   --display:"Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
   --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:"DM Mono", ui-monospace, Menlo, monospace;
@@ -21,12 +22,14 @@
     color-scheme:dark;
     --ground:#0F1D1A; --surface:#172A26; --ink:#E6F1EC; --muted:#9DB5AD; --line:#2A423C;
     --water:#4FC3DA; --water-soft:#163A40; --sun:#F4C542; --sun-ink:#12302A; --pine:#9ED9C4;
+    --dirt:#A07A4E; --dirt-dark:#86643F; --grime:#A89560;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
   --ground:#0F1D1A; --surface:#172A26; --ink:#E6F1EC; --muted:#9DB5AD; --line:#2A423C;
   --water:#4FC3DA; --water-soft:#163A40; --sun:#F4C542; --sun-ink:#12302A; --pine:#9ED9C4;
+    --dirt:#A07A4E; --dirt-dark:#86643F; --grime:#A89560;
 }
 *{box-sizing:border-box}
 body{background:var(--ground);color:var(--ink);font:16px/1.6 var(--body);padding-inline:20px}
@@ -56,12 +59,14 @@ header.top{display:flex;justify-content:space-between;align-items:center;gap:16p
 .btn.primary:hover{filter:brightness(1.08)}
 .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
 .btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--ink)}
-.bin-art{justify-self:center;width:100%;max-width:340px}
-.bin-art svg{width:100%;height:auto;display:block}
+.bin-art{justify-self:center;width:100%;max-width:400px}
+.bin-art svg{width:100%;height:auto;display:block;overflow:visible}
+.bin-art .jet{stroke:var(--water);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:6 7;fill:none}
 @media (prefers-reduced-motion:no-preference){
-  .drop{animation:fall 2.4s ease-in infinite}
-  .drop:nth-of-type(2){animation-delay:.6s}.drop:nth-of-type(3){animation-delay:1.2s}.drop:nth-of-type(4){animation-delay:1.8s}
-  @keyframes fall{0%{transform:translateY(-8px);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateY(46px);opacity:0}}
+  .bin-art .jet{animation:jet .28s linear infinite}
+  .bin-art .aim{animation:aim 1.1s ease-in-out infinite alternate}
+  @keyframes jet{to{stroke-dashoffset:-26}}
+  @keyframes aim{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
 }
 
 /* Week strip */
@@ -178,7 +183,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
 
 @media (max-width:860px){
   .hero,.included,.signup{grid-template-columns:1fr}
-  .bin-art{max-width:240px;order:-1;justify-self:start}
+  .bin-art{max-width:300px;order:-1;justify-self:start}
   .steps{grid-template-columns:1fr 1fr}
   .faq{grid-template-columns:1fr}
 }
@@ -226,22 +231,48 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
       </div>
     </div>
     <div class="bin-art" aria-hidden="true" data-parallax="-.18">
-      <svg viewBox="0 0 240 240">
-        <ellipse cx="120" cy="222" rx="80" ry="10" fill="var(--line)"/>
-        <path d="M64 70 L176 70 L166 214 L74 214 Z" fill="var(--water)"/>
-        <path d="M78 86 L86 204" stroke="var(--ground)" stroke-width="5" stroke-linecap="round" opacity=".35"/>
-        <rect x="52" y="54" width="136" height="20" rx="6" fill="var(--ink)"/>
-        <rect x="100" y="44" width="40" height="12" rx="4" fill="var(--ink)"/>
-        <circle cx="86" cy="214" r="9" fill="var(--ink)"/><circle cx="154" cy="214" r="9" fill="var(--ink)"/>
-        <g fill="var(--sun)">
-          <path d="M196 22 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z"/>
-          <path d="M40 30 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z"/>
-        </g>
-        <g fill="var(--water)" opacity=".75">
-          <path class="drop" d="M200 70 q6 10 0 14 q-6 -4 0 -14z"/>
-          <path class="drop" d="M214 90 q6 10 0 14 q-6 -4 0 -14z"/>
-          <path class="drop" d="M30 80 q6 10 0 14 q-6 -4 0 -14z"/>
-          <path class="drop" d="M20 104 q6 10 0 14 q-6 -4 0 -14z"/>
+      <svg viewBox="-30 -50 360 290" id="canArt">
+        <g transform="translate(30 0)">
+          <ellipse cx="120" cy="222" rx="80" ry="10" fill="var(--line)"/>
+          <ellipse class="puddle" cx="52" cy="226" rx="30" ry="6" fill="#7A5A36" opacity="0"/>
+          <path d="M64 70 L176 70 L166 214 L74 214 Z" fill="var(--water)"/>
+          <path d="M78 86 L86 204" stroke="var(--ground)" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+          <circle cx="86" cy="214" r="9" fill="var(--ink)"/><circle cx="154" cy="214" r="9" fill="var(--ink)"/>
+          <g class="drips" stroke="var(--dirt-dark)" stroke-linecap="round">
+            <path d="M84 72 v34" stroke-width="5"/><path d="M103 72 v18" stroke-width="3.5"/>
+            <path d="M126 72 v48" stroke-width="4"/><path d="M147 72 v24" stroke-width="5.5"/><path d="M160 72 v40" stroke-width="3"/>
+          </g>
+          <ellipse class="hole" cx="120" cy="70" rx="56" ry="7" fill="#4A3520" opacity="0"/>
+          <g class="lid">
+            <rect x="52" y="54" width="136" height="20" rx="6" fill="var(--ink)"/>
+            <rect x="100" y="44" width="40" height="12" rx="4" fill="var(--ink)"/>
+          </g>
+          <g class="stink" fill="none" stroke="var(--stink)" stroke-width="3" stroke-linecap="round" opacity=".85">
+            <path d="M96 38 q-7 -7 0 -13 q7 -6 0 -13"/><path d="M120 34 q-7 -7 0 -13 q7 -6 0 -13"/><path d="M144 38 q-7 -7 0 -13 q7 -6 0 -13"/>
+          </g>
+          <g class="gunk"></g>
+          <g class="wand" opacity="0">
+            <g transform="rotate(60) scale(-1 1)">
+              <g class="aim">
+                <g class="spray">
+                  <polygon points="0,-2 -74,-11 -74,11 0,2" fill="var(--water)" opacity=".28"/>
+                  <path class="jet" d="M0 0 L-74 -7"/><path class="jet" d="M0 0 L-74 0"/><path class="jet" d="M0 0 L-74 7"/>
+                </g>
+                <path d="M82 24 C 88 62, 140 58, 190 96" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
+                <rect x="4" y="-2" width="58" height="4" rx="2" fill="var(--ink)"/>
+                <rect x="-3" y="-3.5" width="9" height="7" rx="1.5" fill="var(--sun)" stroke="var(--ink)" stroke-width="1.5"/>
+                <rect x="76" y="3" width="11" height="24" rx="4" fill="var(--ink)" transform="rotate(14 81 3)"/>
+                <path d="M70 5 q2 9 8 11" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <rect x="60" y="-7" width="32" height="13" rx="4" fill="var(--sun)" stroke="var(--ink)" stroke-width="2"/>
+              </g>
+            </g>
+          </g>
+          <g class="sparkles" fill="var(--sun)">
+            <path d="M200 26l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:200px 36px"/>
+            <path d="M44 40l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:44px 50px"/>
+            <path d="M150 110l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:150px 120px"/>
+            <path d="M96 16l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" style="transform-origin:96px 26px"/>
+          </g>
         </g>
       </svg>
     </div>
@@ -443,6 +474,91 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
   addEventListener('resize', queue);
   reduce.addEventListener?.('change', queue);
   update();
+
+  // Hero can: lid flips open, washer blasts gunk out, puddle rinses clear, sparkles. One loop = 6s.
+  (function(){
+    const svg = document.getElementById('canArt'), D = 6000, S0 = .2, S1 = .64, anims = [];
+    const q = sel => svg.querySelector(sel);
+    const loop = (node, frames) => anims.push(node.animate(frames, { duration: D, iterations: Infinity }));
+    const T = (x, y) => `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+    let seed = 7;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const between = (a, b) => a + rnd() * (b - a);
+
+    q('.lid').style.transformOrigin = '186px 64px';
+    loop(q('.lid'), [
+      { offset: 0, transform: 'rotate(0deg)' },
+      { offset: .05, transform: 'rotate(0deg)', easing: 'ease-in-out' },
+      { offset: .15, transform: 'rotate(250deg)' },
+      { offset: .74, transform: 'rotate(250deg)', easing: 'ease-in-out' },
+      { offset: .85, transform: 'rotate(0deg)' },
+      { offset: 1, transform: 'rotate(0deg)' }
+    ]);
+    loop(q('.hole'), [
+      { offset: 0, opacity: 0, fill: '#4A3520' }, { offset: .07, opacity: 0, fill: '#4A3520' },
+      { offset: .1, opacity: 1, fill: '#4A3520' }, { offset: S0 + .05, opacity: 1, fill: '#4A3520' },
+      { offset: S1, opacity: 1, fill: '#12302A' }, { offset: .8, opacity: 1, fill: '#12302A' },
+      { offset: .83, opacity: 0, fill: '#12302A' }, { offset: 1, opacity: 0, fill: '#4A3520' }
+    ]);
+    loop(q('.stink'), [
+      { offset: 0, opacity: .85, transform: T(0, 0) }, { offset: .05, opacity: .85, transform: T(0, 0) },
+      { offset: .12, opacity: 0, transform: T(0, -14) }, { offset: .95, opacity: 0, transform: T(0, 0) },
+      { offset: 1, opacity: .85, transform: T(0, 0) }
+    ]);
+    loop(q('.wand'), [
+      { offset: 0, transform: T(10, -70), opacity: 0 }, { offset: .12, transform: T(10, -70), opacity: 0 },
+      { offset: .18, transform: T(78, 6), opacity: 1 }, { offset: S1, transform: T(78, 6), opacity: 1 },
+      { offset: .7, transform: T(10, -70), opacity: 0 }, { offset: 1, transform: T(10, -70), opacity: 0 }
+    ]);
+    loop(q('.spray'), [
+      { offset: 0, opacity: 0 }, { offset: S0, opacity: 0 }, { offset: S0 + .01, opacity: 1 },
+      { offset: S1, opacity: 1 }, { offset: S1 + .01, opacity: 0 }, { offset: 1, opacity: 0 }
+    ]);
+    loop(q('.drips'), [
+      { offset: 0, opacity: 1 }, { offset: S0 + .1, opacity: 1 }, { offset: S1, opacity: 0 },
+      { offset: .95, opacity: 0 }, { offset: 1, opacity: 1 }
+    ]);
+    const dirt = ['var(--dirt)', 'var(--dirt-dark)', 'var(--grime)'], gunk = q('.gunk');
+    for (let i = 0; i < 24; i++){
+      const x = between(96, 146), r = between(3, 7);
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.innerHTML = `<ellipse cx="${x.toFixed(1)}" cy="70" rx="${r.toFixed(1)}" ry="${(r * between(.55, .9)).toFixed(1)}" fill="${dirt[i % 3]}" transform="rotate(${between(-40, 40).toFixed(0)} ${x.toFixed(1)} 70)"/>`;
+      g.style.opacity = 0;
+      gunk.appendChild(g);
+      const o = between(S0 + .02, S1 - .04), dx = (rnd() - .5) * 170, up = between(40, 95);
+      loop(g, [
+        { offset: 0, transform: T(0, 0), opacity: 0 },
+        { offset: o, transform: T(0, 0), opacity: 0 },
+        { offset: o + .005, transform: T(0, 0), opacity: 1, easing: 'ease-out' },
+        { offset: o + .05, transform: T(dx * .45, -up), opacity: 1, easing: 'ease-in' },
+        { offset: o + .13, transform: T(dx, 150), opacity: 0 },
+        { offset: 1, transform: T(dx, 150), opacity: 0 }
+      ]);
+    }
+    q('.puddle').style.transformOrigin = '52px 226px';
+    loop(q('.puddle'), [
+      { offset: 0, transform: 'scale(0)', opacity: 1, fill: '#7A5A36' },
+      { offset: S0 + .05, transform: 'scale(0)', opacity: 1, fill: '#7A5A36' },
+      { offset: S1, transform: 'scale(1)', opacity: 1, fill: '#7A5A36' },
+      { offset: .74, transform: 'scale(1.05)', opacity: 1, fill: '#7FC4D3' },
+      { offset: .88, transform: 'scale(1.1)', opacity: 0, fill: '#7FC4D3' },
+      { offset: 1, transform: 'scale(0)', opacity: 0, fill: '#7A5A36' }
+    ]);
+    svg.querySelectorAll('.sparkles path').forEach((p, i) => {
+      const o = .8 + i * .02, s = [1.1, .8, .7, .9][i];
+      loop(p, [
+        { offset: 0, transform: 'scale(0)' }, { offset: o, transform: 'scale(0)' },
+        { offset: o + .05, transform: `scale(${s * 1.25})` }, { offset: o + .09, transform: `scale(${s})` },
+        { offset: .96, transform: `scale(${s})` }, { offset: 1, transform: 'scale(0)' }
+      ]);
+    });
+    // Reduced motion: hold on the clean, sparkling can
+    function applyMotion(){
+      anims.forEach(a => { if (reduce.matches){ a.pause(); a.currentTime = D * .9; } else a.play(); });
+    }
+    reduce.addEventListener?.('change', applyMotion);
+    applyMotion();
+  })();
 })();
 </script>
 </body>
