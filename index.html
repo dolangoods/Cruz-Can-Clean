@@ -46,9 +46,9 @@ header.top{display:flex;justify-content:space-between;align-items:center;gap:16p
 
 /* Hero */
 .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-block:24px 48px}
-.hero h1{font-size:clamp(46px,8vw,92px);font-weight:800}
+.hero h1{font-size:clamp(34px,5.4vw,62px);font-weight:800}
 .hero h1 .sat{color:var(--water)}
-.hero .lede{font-size:19px;max-width:34ch;margin-top:20px;color:var(--muted)}
+.hero .lede{font-size:18px;max-width:34ch;margin-top:20px;color:var(--muted)}
 .hero .lede strong{color:var(--ink)}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .btn{font:600 16px var(--body);border:0;cursor:pointer;text-decoration:none;padding:14px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:8px}
@@ -121,7 +121,7 @@ section > h2{font-size:clamp(32px,5vw,48px);margin-bottom:12px}
 .ph .tag{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;padding:3px 8px;border-radius:999px;background:var(--ink);color:var(--ground)}
 .ph.after .tag{background:var(--water);color:#fff}
 .ph .hint{font-size:12px}
-.action-shot{margin-top:20px;display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+.action-shot{margin-top:20px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px}
 .action-shot .ph{aspect-ratio:16/9}
 @media (max-width:860px){.photos-grid{grid-template-columns:1fr 1fr}.action-shot{grid-template-columns:1fr}}
 @media (max-width:560px){.photos-grid{grid-template-columns:1fr}}
@@ -166,6 +166,14 @@ fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
 .faq h3{font-size:19px;margin-bottom:6px;font-family:var(--body);font-weight:600;letter-spacing:0}
 .faq p{color:var(--muted);font-size:15px}
 
+/* Parallax */
+body{position:relative}
+.wrap{position:relative;z-index:1}
+[data-parallax]{translate:0 var(--py,0px);will-change:translate}
+.bubbles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.bubbles span{position:absolute;border-radius:50%;border:2px solid var(--water);opacity:.14;translate:0 var(--py,0px);will-change:translate}
+.bubbles span.fill{background:var(--water-soft);border-color:transparent;opacity:.7}
+
 footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:14px}
 
 @media (max-width:860px){
@@ -185,6 +193,17 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
 <style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
+<div class="bubbles" aria-hidden="true">
+  <span class="fill" data-depth=".35" style="width:220px;height:220px;top:4%;left:-80px"></span>
+  <span data-depth=".6" style="width:60px;height:60px;top:9%;left:46%"></span>
+  <span data-depth=".2" style="width:140px;height:140px;top:18%;right:-40px"></span>
+  <span class="fill" data-depth=".5" style="width:90px;height:90px;top:30%;left:6%"></span>
+  <span data-depth=".3" style="width:260px;height:260px;top:40%;right:-120px"></span>
+  <span data-depth=".65" style="width:40px;height:40px;top:52%;left:40%"></span>
+  <span class="fill" data-depth=".25" style="width:180px;height:180px;top:62%;left:-70px"></span>
+  <span data-depth=".55" style="width:70px;height:70px;top:74%;right:8%"></span>
+  <span class="fill" data-depth=".4" style="width:150px;height:150px;top:86%;right:-50px"></span>
+</div>
 <div class="wrap">
   <header class="top">
     <div class="brand">
@@ -195,7 +214,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
   </header>
 
   <div class="hero">
-    <div>
+    <div data-parallax=".12">
       <p class="label">Willowsford · The Grove</p>
       <h1 style="margin-top:14px">Trucks take the trash Friday. I clean the cans <span class="sat">Saturday.</span></h1>
       <p class="lede">Smelly, sticky trash and recycling bins, power washed with soap and degreaser <strong>right at your house</strong> the morning after pickup. You don't lift a finger.</p>
@@ -206,7 +225,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
         <a class="btn ghost" href="#how">How it works</a>
       </div>
     </div>
-    <div class="bin-art" aria-hidden="true">
+    <div class="bin-art" aria-hidden="true" data-parallax="-.18">
       <svg viewBox="0 0 240 240">
         <ellipse cx="120" cy="222" rx="80" ry="10" fill="var(--line)"/>
         <path d="M64 70 L176 70 L166 214 L74 214 Z" fill="var(--water)"/>
@@ -228,7 +247,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
     </div>
   </div>
 
-  <div class="week" aria-label="Weekly schedule">
+  <div class="week" data-parallax=".06" aria-label="Weekly schedule">
     <div class="week-head">
       <h2>Your week, with a clean can</h2>
       <span class="label">Every week in The Grove</span>
@@ -251,7 +270,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
   <section id="how">
     <h2>How it works</h2>
     <p class="sub">Your bins are already empty and already at the curb after Friday's pickup. That's the whole trick.</p>
-    <div class="steps">
+    <div class="steps" data-parallax="-.06">
       <div class="step"><span class="n">STEP 1</span><h3>Sign up</h3><p>Fill out the form below with your address in The Grove and which bins you want cleaned.</p></div>
       <div class="step"><span class="n">STEP 2</span><h3>Leave them out</h3><p>After Friday's pickup, leave your empty bins at the curb overnight, and make sure I can get to your outdoor hose and power outlet.</p></div>
       <div class="step"><span class="n">STEP 3</span><h3>Saturday power wash</h3><p>Saturday morning I power wash each can inside and out with soap and degreaser.</p></div>
@@ -270,11 +289,11 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
       </ul>
     </div>
     <div class="side">
-    <div class="gear">
+    <div class="gear" data-parallax=".05">
       <div><span class="label">Cruz brings</span><ul><li>Power washer</li><li>Soap</li><li>Degreaser</li><li>Extension cord</li></ul></div>
       <div><span class="label">You provide</span><ul><li>An outdoor hose spigot</li><li>An outdoor power outlet</li></ul></div>
     </div>
-    <div class="why">
+    <div class="why" data-parallax="-.1">
       <h3>Why bother?</h3>
       <p>A summer week in a closed plastic bin turns leftovers into a smell you can't miss from the garage. A clean can keeps flies, maggots, and raccoons away, and makes taking out the trash a lot less gross.</p>
     </div>
@@ -284,7 +303,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
   <section id="photos">
     <h2>Before and after</h2>
     <p class="sub">Real cans from The Grove, cleaned on a Saturday morning.</p>
-    <div class="photos-grid">
+    <div class="photos-grid" data-parallax="-.05">
       <figure class="pair" style="margin:0">
         <div class="ph"><span class="tag">BEFORE</span><span class="hint">Photo 1A<br>before cleaning</span></div>
         <div class="ph after"><span class="tag">AFTER</span><span class="hint">Photo 1B<br>after cleaning</span></div>
@@ -301,14 +320,14 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
         <figcaption>Caption for can 3</figcaption>
       </figure>
     </div>
-    <div class="action-shot">
+    <div class="action-shot" data-parallax=".05">
       <div class="ph"><span class="tag">ON THE JOB</span><span class="hint">Photo of Cruz power washing a can</span></div>
       <div class="ph"><span class="tag">ON THE JOB</span><span class="hint">Photo of Cruz with his setup</span></div>
     </div>
   </section>
 
   <div class="area">
-    <div class="stamp"><div><div class="only">ONLY IN</div><div class="grove">The Grove</div><div class="only" style="margin-top:4px">WILLOWSFORD</div></div></div>
+    <div class="stamp" data-parallax="-.2"><div><div class="only">ONLY IN</div><div class="grove">The Grove</div><div class="only" style="margin-top:4px">WILLOWSFORD</div></div></div>
     <div>
       <h2>Serving one neighborhood, on purpose</h2>
       <p>I only clean cans in Willowsford's Grove section. Keeping it to one neighborhood means every house gets done the same Saturday morning, right after Friday pickup, and I'm never far away if something needs another pass.</p>
@@ -325,7 +344,7 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
         <button class="btn ghost" type="button" id="copyPhone" style="justify-self:start;padding:10px 16px;font-size:14px">Copy number</button>
       </div>
     </div>
-    <form id="form" novalidate>
+    <form id="form" novalidate data-parallax="-.04">
       <div class="field"><label for="name">Your name</label><input id="name" type="text" autocomplete="name" placeholder="Jamie Rivera"></div>
       <div class="field"><label for="addr">Street address in The Grove</label><input id="addr" type="text" autocomplete="street-address" placeholder="e.g. 41000 Grove Lane"><span class="hint">Service is only available in Willowsford's Grove section.</span></div>
       <fieldset>
@@ -398,6 +417,32 @@ footer{padding-block:36px 48px;border-top:1px solid var(--line);display:flex;jus
     $('result').hidden=false; $('copied').textContent='';
   });
   $('copyMsg').addEventListener('click', () => copy($('msg').textContent, $('msg'), t => $('copied').textContent=t));
+
+  // Parallax: [data-parallax] shifts by its distance from the viewport center; .bubbles drift with scroll depth
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const items = [...document.querySelectorAll('[data-parallax]')];
+  const bubbles = [...document.querySelectorAll('.bubbles [data-depth]')];
+  let ticking = false;
+  function update(){
+    ticking = false;
+    const still = reduce.matches, vh = innerHeight, y = scrollY;
+    for(const el of items){
+      if(still){ el.style.removeProperty('--py'); continue; }
+      const cur = parseFloat(el.style.getPropertyValue('--py')) || 0;
+      const r = el.getBoundingClientRect();
+      const offset = (r.top - cur + r.height/2) - vh/2;
+      el.style.setProperty('--py', (offset * parseFloat(el.dataset.parallax)).toFixed(1) + 'px');
+    }
+    for(const b of bubbles){
+      if(still){ b.style.removeProperty('--py'); continue; }
+      b.style.setProperty('--py', (y * parseFloat(b.dataset.depth)).toFixed(1) + 'px');
+    }
+  }
+  function queue(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  addEventListener('scroll', queue, {passive:true});
+  addEventListener('resize', queue);
+  reduce.addEventListener?.('change', queue);
+  update();
 })();
 </script>
 </body>
