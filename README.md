@@ -17,5 +17,5 @@ One-page website for Cruz's trash and recycling can cleaning business in Willows
 ## To do
 
 - **Photos:** the "Before and after" section uses cartoon illustrations (inline SVG). To swap in real photos, replace a `<div class="ph toon">` with an `<img>` (before/after panels are 3:4, "on the job" shots are 16:9).
-- **Booking:** the sign-up section embeds Cal.com (`cal.com/cruz-can-clean`) for the four Saturday slots. Availability, slot count and booking questions are managed in the Cal.com dashboard, not in this repo.
+- **Booking:** the sign-up section embeds Cal.com (`cal.com/cruz-can-clean/cleaning`) for the four Saturday slots. Availability, slot count and booking questions are managed in the Cal.com dashboard, not in this repo.
 - **Hosting:** works as-is on GitHub Pages (Settings → Pages → deploy from `main`).
