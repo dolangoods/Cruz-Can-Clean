@@ -18,4 +18,4 @@ One-page website for Cruz's trash and recycling can cleaning business in Willows
 
 - **Photos:** the "Before and after" section uses cartoon illustrations (inline SVG). To swap in real photos, replace a `<div class="ph toon">` with an `<img>` (before/after panels are 3:4, "on the job" shots are 16:9).
 - **Booking:** the sign-up section embeds Cal.com (`cal.com/cruz-can-clean/cleaning`) for the four Saturday slots. Availability, slot count and booking questions are managed in the Cal.com dashboard, not in this repo.
-- **Hosting:** works as-is on GitHub Pages (Settings → Pages → deploy from `main`).
+- **Hosting:** GitHub Pages from `main`, at **https://cruzcanclean.com** (custom domain set in Settings → Pages; the `CNAME` file holds it). DNS is at GoDaddy: four `A @` records to GitHub's `185.199.108-111.153` and `www` as a CNAME to `dolangoods.github.io`.
